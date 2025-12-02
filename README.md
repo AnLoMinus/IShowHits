@@ -1,5 +1,8 @@
 # ⚡ IShowHits – **SparkBeam (SB)**
 
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/cd50ca45-3c8a-431c-8f30-c39163bf3559" />
+
+
 *(שם קוד אנגלי קצר: **IShowHits · SparkBeam (SB)**)*
 🗓️ תאריך: ב' כסלו תשפ"ו · 02/12/2025
 ⏰ שעה נוכחית: 19:00
