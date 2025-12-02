@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>IShowHitSparKing – אני מציג להיטים | HitSpark (HS)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="IShowHitSparKing – ערוץ יוטיוב של אור, להיטים וניצוצות. אני מציג להיטים: תורה, מוזיקה, השראה ולייבים – AnLoMinus SparKing Leon Yaakobov." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="IShowHitSparKing – אני מציג להיטים" />
+  <meta property="og:description" content="להיטים של אור, אמונה, מוזיקה והשראה. הצטרף לערוץ IShowHitSparKing." />
+  <!-- החלף לתמונה שלך כשתהיה:
+  <meta property="og:image" content="https://anlominus.github.io/IShowHitSparKing/assets/ishowhits-hero.png" />
+  -->
+  <meta property="og:url" content="https://www.youtube.com/@IShowHitSparKing" />
+
+  <style>
+    :root {
+      --bg-main: #050816;
+      --bg-card: rgba(10, 20, 40, 0.9);
+      --accent: #ffcc4d;
+      --accent-2: #32e4ff;
+      --text-main: #f4f7ff;
+      --text-soft: #c4c8e0;
+      --border-glow: 0 0 20px rgba(255, 204, 77, 0.4);
+      --radius-xl: 24px;
+      --transition-fast: 0.25s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2340 0%, #050816 45%, #02030a 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 24px;
+      align-items: center;
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, #312e81 0, #020617 55%, #000 100%);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(255, 204, 77, 0.18) 0, transparent 50%),
+        radial-gradient(circle at 100% 0, rgba(50, 228, 255, 0.18) 0, transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.3) 0, transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-content,
+    .hero-side {
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+
+    .badge span {
+      font-size: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 3.1vw, 34px);
+      line-height: 1.1;
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #ffdd55, #ff7f50, #32e4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .hero-bullets {
+      list-style: none;
+      margin-bottom: 20px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .hero-bullets li {
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-bullets li span.icon {
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-main,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+                  background var(--transition-fast), border-color var(--transition-fast);
+      background: none;
+      color: inherit;
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, #ffcc4d, #ff8c42);
+      color: #020617;
+      box-shadow: 0 0 25px rgba(255, 204, 77, 0.55);
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 0 35px rgba(255, 204, 77, 0.8);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-soft);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 18px rgba(50, 228, 255, 0.6);
+      color: #e5f9ff;
+    }
+
+    .mini-meta {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 10px;
+    }
+
+    /* ===== Hero Side – Channel Card ===== */
+    .hero-side {
+      justify-self: stretch;
+    }
+
+    .channel-card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 20px;
+      padding: 16px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      box-shadow: var(--border-glow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .channel-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .channel-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 0, #ffcc4d 0, #ff7f50 30%, #5b21ff 70%, #020617 100%);
+      box-shadow: 0 0 18px rgba(255, 204, 77, 0.8);
+      border: 2px solid rgba(148, 163, 184, 0.9);
+    }
+
+    .channel-text-main {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .channel-text-sub {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-soft);
+    }
+
+    .channel-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* ===== Sections ===== */
+    section {
+      margin-top: 32px;
+    }
+
+    h2.section-title {
+      font-size: 22px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2.section-title span.icon {
+      font-size: 22px;
+    }
+
+    p.section-sub {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .card ul li {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .yt-wrapper {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      background: #020617;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .yt-inner {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .yt-inner iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .yt-caption {
+      padding: 8px 12px 10px;
+      font-size: 12px;
+      color: var(--text-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: radial-gradient(circle at top, #111827 0, #020617 85%);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.7);
+      background: radial-gradient(circle at top, #111827 0, #020617 70%);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 16px 22px;
+      font-size: 11px;
+      color: var(--text-soft);
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hashtags {
+      font-size: 11px;
+      color: var(--text-soft);
+      opacity: 0.95;
+    }
+
+    .rap-block {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 12px;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .pasuk {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #e5e7eb;
+      font-style: italic;
+    }
+
+    .midot {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-side {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding-inline: 10px;
+      }
+      .hero {
+        padding: 18px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">
+          <span>📺</span> <strong>IShowHitSparKing</strong> · אני מציג להיטים
+        </div>
+
+        <h1 class="hero-title">
+          <span>IShowHitSparKing</span> – אור של להיטים, ניצוצות על המסך.
+        </h1>
+
+        <p class="hero-sub">
+          להיטים של קדושה, השראה ומוזיקה – כל פעם עוד ניצוץ על הצג.
+          ערוץ שמחבר בין אור, אמת וסאונד חזק.
+        </p>
+
+        <ul class="hero-bullets">
+          <li><span class="icon">✨</span> דרשות, שיחות ותכני עומק שמאירים את היום.</li>
+          <li><span class="icon">🎶</span> שירים, רמיקסים וקטעי מוזיקה בסגנון SparKing.</li>
+          <li><span class="icon">🔥</span> רגעי השראה, קטעים קצרים ושורטס מדויקים.</li>
+          <li><span class="icon">🤝</span> קהילה של אנשים שמחפשים אור אמיתי בתוך הרעש.</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a class="btn-main" href="https://www.youtube.com/@IShowHitSparKing" target="_blank" rel="noopener">
+            🚀 כניסה לערוץ · Subscribe Now
+          </a>
+          <a class="btn-ghost" href="#featured-video">
+            🎬 לצפייה בלהיט הפתיחה
+          </a>
+        </div>
+
+        <div class="mini-meta">
+          HitSpark (HS) · AnLoMinus · SparKing · Leon Yaakobov
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="channel-card">
+          <div class="channel-header">
+            <div class="channel-avatar"></div>
+            <div>
+              <div class="channel-text-main">IShowHitSparKing</div>
+              <div class="channel-text-sub">אני מציג להיטים · Official Channel</div>
+            </div>
+          </div>
+
+          <div class="pill-row">
+            <div class="pill">✨ Light Hits</div>
+            <div class="pill">🎧 Electro–Holy Vibes</div>
+            <div class="pill">📖 Torah & Inspiration</div>
+            <div class="pill">⚡ SparKing Energy</div>
+          </div>
+
+          <p class="channel-text-sub">
+            כל סרטון נבנה כניצוץ – חיזוק, מחשבה, תדר. אתה רק לוחץ Play, והשאר – אש.
+          </p>
+
+          <div class="channel-footer">
+            <span>📡 New Wave of Holy Hits</span>
+            <span>▶ Powered by AnLoMinus</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURED VIDEO ===== -->
+    <section id="featured-video">
+      <h2 class="section-title">
+        <span class="icon">🎬</span> וידאו פתיחה – אור החנוכה
+      </h2>
+      <p class="section-sub">
+        להיט פתיחה לערוץ: שיעור שמקרין אור לחיים – "אור החנוכה | הרב רונן שאולוב שליט&quot;א".
+      </p>
+
+      <div class="yt-wrapper">
+        <div class="yt-inner">
+          <!-- ניתן להחליף לוידאו אחר מהערוץ כשתרצה -->
+          <iframe
+            src="https://www.youtube.com/embed/rM9flPtkBok"
+            title="אור החנוכה | הרב רונן שאולוב"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="yt-caption">
+          <span>✨ Highlight: אור החנוכה · Light in the Dark</span>
+          <span>📺 Curated on IShowHitSparKing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTENT SECTIONS ===== -->
+    <section>
+      <h2 class="section-title">
+        <span class="icon">📂</span> סוגי להיטים בערוץ
+      </h2>
+      <p class="section-sub">
+        הדף מוכן לגדילה – כל כרטיס מייצג סוג תוכן שתפתח בערוץ. רק לעדכן שמות ופלייליסטים.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>📖 Torah Hits · דברי חיזוק</h3>
+          <p>
+            שיעורי תורה, דרשות, קטעי חיזוק, זוהר, חסידות וסודות החיים – בפורמט קצר, נגיש ומדויק.
+          </p>
+          <ul>
+            <li>🔹 "דקה של אור" – קטעי קצרצר.</li>
+            <li>🔹 שיעורים מלאים בסדרות.</li>
+            <li>🔹 פלייליסט נפרד לכל נושא.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>🎶 Holy Beats · רמיקסים & מוזיקה</h3>
+          <p>
+            מוזיקת Electro–Kabbalah, Trap קדוש, רמיקסים וקטעי אינסטרומנטל לליווי החיים.
+          </p>
+          <ul>
+            <li>🔹 קליפים עם אנימציית SparKing.</li>
+            <li>🔹 שירי מוטיבציה וניצחון.</li>
+            <li>🔹 פלייליסטי מצב רוח: Morning, Focus, Battle.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>⚡ Short Sparks · שורטס מהירים</h3>
+          <p>
+            מסרים קצרים ומדויקים: משפט, רעיון, תזכורת. 15–60 שניות שמשנות תדר.
+          </p>
+          <ul>
+            <li>🔹 "Spark of the Day".</li>
+            <li>🔹 קליפים של משפטי כוח.</li>
+            <li>🔹 רגעים חיים מתוך היום-יום.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>🟢 Live Flow · שידורים חיים</h3>
+          <p>
+            בעתיד: לייבים, שאלות ותשובות, לימוד משותף, חיזוקים בזמן אמת – קהילה על המסך.
+          </p>
+          <ul>
+            <li>🔹 מפגשי לימוד מרוכזים.</li>
+            <li>🔹 שידורי חנוכה, שבתות מיוחדות, מועד.</li>
+            <li>🔹 זמן פתוח לקהל – שאלות ותגובות.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== HOW TO JOIN ===== -->
+    <section>
+      <h2 class="section-title">
+        <span class="icon">🤝</span> איך מצטרפים לגל של IShowHitSparKing?
+      </h2>
+      <p class="section-sub">
+        כמה צעדים פשוטים – ואתה חלק מהגל.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>1️⃣ Subscribe · הירשם לערוץ</h3>
+          <p>
+            לוחצים על כפתור <strong>Subscribe</strong> ומפעילים את הפעמון. כל להיט חדש – מגיע אליך ישר למסך.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>2️⃣ Share · שתף את האור</h3>
+          <p>
+            שולחים סרטון לחבר שצריך חיזוק, לקבוצה שצריכה אור, למשפחה. כל שיתוף – עוד ניצוץ.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>3️⃣ Comment · תגובה עם נשמה</h3>
+          <p>
+            מגיבים מה הלחיץ, מה הרים אותך, על מה תרצה עוד. ככה הערוץ נבנה כ־קהילה חיה.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>4️⃣ Co-Create · יצירה משותפת</h3>
+          <p>
+            רעיון לסדרה? שאלה? קלף גרפי? שולחים הצעה – והופכים להיות חלק מהבריאה הדיגיטלית.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-meta">
+        <div>
+          © IShowHitSparKing · HitSpark (HS) · AnLoMinus · SparKing · Leon Yaakobov  
+          לועזי: Tuesday, 2 December 2025 · עברי: י״ב בכסלו תשפ״ו · שעה: 20:28 (UTC+02)
+        </div>
+      </div>
+
+      <div class="hashtags">
+        #IShowHitSparKing #IShowHits #HitSpark #SparKing #AnLoMinus #LeonYaakobov
+        #HolyHits #ElectroKabbalah #LightSeries #YouTubeChannel
+      </div>
+
+      <div class="rap-block">
+🎤 Rap Chorus – IShowHitSparKing Flow  
+IShowHitSparKing, hits on the screen,  
+Leon on the wave with a holy-light beam,  
+AnLoMinus vibin’, spark up the scene,  
+Every click play turns darkness to gleam.
+      </div>
+
+      <div class="pasuk">
+        פסוק השראה: "וְהַמַּשְׂכִּלִים יַזְהִירוּ כְּזֹהַר הָרָקִיעַ" (דניאל י״ב, ג׳)
+      </div>
+
+      <div class="midot">
+        מספר המידות: 3 – אמונה, התמדה, שיתוף.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
