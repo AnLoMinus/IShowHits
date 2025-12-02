@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>IShowHits – SparkBeam · AnLoMinus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="IShowHits – SparkBeam (SB). AnLoMinus · SparKing Leon Yaakobov. אתר ויזואלי להצגת ה-Hits, השיעורים והאנרגיה." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* ===== Base ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1020 0%, #03040a 55%, #000000 100%);
+      color: #f5f5ff;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a {
+      color: #ffd86b;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title-main {
+      font-size: clamp(2.6rem, 5vw, 3.6rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #ffd86b;
+      text-shadow: 0 0 18px rgba(255, 216, 107, 0.9);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title-sub {
+      font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: #ffeaa7;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #dde3ff;
+      max-width: 640px;
+      margin: 0.5rem auto 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 216, 107, 0.7);
+      background: radial-gradient(circle at top left, #ffd86b 0%, #ff9f43 45%, #f368e0 100%);
+      color: #120c24;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 0 18px rgba(255, 216, 107, 0.7);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 28px rgba(255, 216, 107, 0.9);
+      filter: brightness(1.08);
+    }
+
+    .btn-outline {
+      background: rgba(6, 10, 30, 0.7);
+      color: #ffd86b;
+      border: 1px solid rgba(255, 216, 107, 0.55);
+      box-shadow: 0 0 14px rgba(255, 216, 107, 0.45);
+    }
+
+    .btn-outline:hover {
+      background: rgba(16, 20, 50, 0.9);
+    }
+
+    .hero-meta {
+      font-size: 0.82rem;
+      color: #b7c0ff;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+    }
+
+    .hero-bg-ray {
+      position: absolute;
+      inset: -40%;
+      background-image:
+        radial-gradient(circle at bottom, rgba(255, 216, 107, 0.22) 0, transparent 58%),
+        radial-gradient(circle at center, rgba(72, 149, 239, 0.45) 0, transparent 65%);
+      opacity: 0.55;
+      filter: blur(2px);
+      z-index: 0;
+    }
+
+    .hero-bg-beam {
+      position: absolute;
+      left: 50%;
+      top: -10%;
+      bottom: -10%;
+      width: 3px;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 216, 107, 1),
+        rgba(255, 140, 0, 0.0)
+      );
+      box-shadow:
+        0 0 25px rgba(255, 255, 255, 0.75),
+        0 0 45px rgba(255, 216, 107, 0.85),
+        0 0 90px rgba(255, 140, 0, 0.8);
+      transform: translateX(-50%);
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    /* Optional: poster preview (swap src to your 8K art) */
+    .hero-poster-preview {
+      margin: 0 auto;
+      margin-top: 1.5rem;
+      max-width: 460px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 216, 107, 0.45);
+      box-shadow:
+        0 0 26px rgba(255, 216, 107, 0.55),
+        0 0 80px rgba(34, 47, 120, 0.95);
+    }
+
+    .hero-poster-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 2.5rem 0;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      color: #ffeaa7;
+    }
+
+    section p {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: #d7ddff;
+      margin-bottom: 0.5rem;
+    }
+
+    .pill-label {
+      display: inline-block;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 216, 107, 0.6);
+      color: #ffd86b;
+      margin-bottom: 0.6rem;
+      background: rgba(9, 12, 28, 0.9);
+    }
+
+    /* ===== Feature Cards ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+      margin-top: 1.4rem;
+    }
+
+    @media (max-width: 880px) {
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .features-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), rgba(4, 5, 18, 0.98));
+      border-radius: 20px;
+      padding: 1.1rem 1rem 1.1rem;
+      border: 1px solid rgba(139, 152, 255, 0.45);
+      box-shadow:
+        0 0 24px rgba(4, 5, 18, 0.9),
+        0 0 26px rgba(93, 109, 255, 0.4);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      color: #ffeaa7;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ===== Blog / Video Section ===== */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.2fr);
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .blog-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 216, 107, 0.55);
+      box-shadow:
+        0 0 24px rgba(255, 216, 107, 0.5),
+        0 0 60px rgba(25, 35, 90, 0.9);
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .blog-meta {
+      font-size: 0.82rem;
+      color: #b3bcff;
+      margin-bottom: 0.4rem;
+    }
+
+    .blog-card {
+      background: radial-gradient(circle at top right, rgba(255, 216, 107, 0.08), rgba(3, 6, 18, 0.96));
+      border-radius: 16px;
+      border: 1px solid rgba(255, 216, 107, 0.4);
+      padding: 0.9rem 1rem;
+      margin-top: 0.6rem;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid rgba(80, 90, 160, 0.6);
+      background: radial-gradient(circle at top, #060a1e 0%, #020309 70%);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.4rem 1.5rem 1.6rem;
+      font-size: 0.82rem;
+      color: #a7b0ff;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 0.3rem 0 0.6rem;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+      align-items: center;
+    }
+
+    .hashtags {
+      font-size: 0.78rem;
+      color: #d0d6ff;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero-bg-ray"></div>
+      <div class="hero-bg-beam"></div>
+
+      <div class="hero-inner">
+        <div class="pill-label">⚡ IShowHits · SparkBeam (SB)</div>
+        <h1 class="hero-title-main">ISHOWHITS</h1>
+        <div class="hero-title-sub">SPARKBEAM</div>
+
+        <p class="hero-tagline">
+          אנרגיית פגיעה מדויקת – כל Hit הוא קרן אור שחוצה את החושך.
+          זהו הבית לשיעורים, לפוסטים, לפוסטרים ולכל מה שמדליק ניצוץ בלב.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="https://github.com/AnLoMinus/IShowHits" target="_blank" rel="noopener">
+            🚀 Open Repo – IShowHits
+          </a>
+          <a class="btn btn-outline" href="#first-hit">
+            🕯️ First Hit – אור החנוכה
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          🗓️ 2 December 2025 · י״ב בכסלו תשפ״ו · AnLoMinus · SparKing Leon Yaakobov
+        </div>
+
+        <!-- Poster preview – החלף לנתיב הפוסטר שלך -->
+        <div class="hero-poster-preview">
+          <img src="assets/IShowHits_SparkBeam_Poster_8K.jpg" alt="IShowHits – SparkBeam Poster" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About Section ===== -->
+    <section id="about">
+      <div class="wrapper">
+        <span class="pill-label">✨ About the Hits</span>
+        <h2>מה זה IShowHits – SparkBeam?</h2>
+        <p>
+          <strong>IShowHits</strong> הוא תדר: מקום שבו כל יצירה, שיעור או פוסט
+          נחשב ל<span>Hit</span> – פגיעה מדויקת בלב ובתודעה. הפרויקט נבנה בסגנון
+          <strong>SparKing Ascension</strong>, עם שפה ויזואלית קוסמית, ברקים, ניצוצות
+          והילה של אור.
+        </p>
+        <p>
+          האתר הזה נועד להיות ה<span>Hub</span> הראשוני: פוסטרים, וידאו, בלוגים,
+          חיבור בין קודש לטכנולוגיה, בין אור החנוכה לאור הניצוץ הפנימי.
+        </p>
+
+        <div class="features-grid">
+          <article class="card">
+            <h3 class="card-title">🎯 Hit Display</h3>
+            <p>
+              כל שיעור, וידאו או יצירה מקבל כרטיס ייחודי – Hit של אנרגיה, תוכן ויזואלי
+              וקישור ישיר למקור.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">👁‍🗨 Vision Beam</h3>
+            <p>
+              IShowHits מציב מיקוד: להאיר, לאזן, לחזק.
+              כל Beam נבנה כדי לעזור לצופה לצאת עם מסר ברור ויישומי.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">⚡ SparKing Flow</h3>
+            <p>
+              מאחורי הקלעים: מאגרי GitHub, תבניות, פוסטרים 8K ומערכות
+              נוספות של SparKing, כולם מתנקזים לתוך הזרימה של האתר הזה.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== First Blog / Video Hit ===== -->
+    <section id="first-hit">
+      <div class="wrapper">
+        <span class="pill-label">🕯️ First Hit · אור החנוכה</span>
+        <h2>ה־Hit הראשון: אור החנוכה – שיעור חי</h2>
+        <p class="blog-meta">
+          🎥 וידאו: הרב רונן שאולוב שליט"א · בשעה 19:00 · מגן יבנה  
+          🔗 YouTube: 
+          <a href="https://www.youtube.com/watch?v=rM9flPtkBok" target="_blank" rel="noopener">
+            אור החנוכה | הרב רונן שאולוב
+          </a>
+        </p>
+
+        <div class="blog-grid">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/rM9flPtkBok"
+              title="אור החנוכה | הרב רונן שאולוב שליט&quot;א"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div>
+            <div class="blog-card">
+              <h3 style="margin-bottom:0.4rem;">🔥 למה השיעור הזה הוא Hit?</h3>
+              <p>
+                אור החנוכה מדבר על הניצוץ שלא נכבה – אור שממשיך לבעור גם כשחושך
+                מקיף את העולם. זה בדיוק לב הפרויקט <strong>IShowHits – SparkBeam</strong>:
+                להראות את האור שמגיח מבפנים, גם אחרי נפילות, חובות, ספקות ואתגרים.
+              </p>
+              <p>
+                השיעור ממוקד בחיזוק, באמונה ובהבנה שכל נר קטן יכול להצית מהפכה.
+                לכן הוא נבחר להיות ה־Hit הראשון, הפתיח של המערכת כולה.
+              </p>
+              <p>
+                אפשר להשתמש בדף הזה כעמוד נחיתה לשיעור החי, לשתף ברשתות
+                ולהרחיב בהמשך לבלוגים נוספים, סיכומים, פוסטרים וקלפים.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div><strong>קרדיטים · Credits</strong></div>
+      <div class="footer-links">
+        <a href="https://github.com/AnLoMinus/IShowHits" target="_blank" rel="noopener">💾 GitHub – IShowHits</a>
+        <a href="https://anlominus.github.io/IShowHits/" target="_blank" rel="noopener">🌐 GitHub Pages – IShowHits</a>
+        <a href="https://github.com/AnLoMinus/SparKing" target="_blank" rel="noopener">⚡ SparKing – Core Repo</a>
+        <a href="https://github.com/AnLoMinus" target="_blank" rel="noopener">👑 AnLoMinus – Profile</a>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          🗓️ 2 December 2025 · י״ב בכסלו תשפ״ו · שעה 19:00 · מספר המידות: 13
+        </div>
+        <div>
+          ✨ פסוק השראה:
+          <em>“ק֚וּמִי א֥וֹרִי כִּ֣י בָ֣א אוֹרֵ֔ךְ” (ישעיהו ס׳ א׳)</em>
+        </div>
+      </div>
+
+      <div class="hashtags">
+        #IShowHits #SparkBeam #AnLoMinus #SparKing #GitHubPages #HanukkahLight #TorahBeats
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
