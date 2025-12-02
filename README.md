@@ -1,6 +1,6 @@
 # ⚡ IShowHits – **SparkBeam (SB)**
 
-<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/cd50ca45-3c8a-431c-8f30-c39163bf3559" />
+<img width="1024" height="1536" alt="image" src="Galactic Burst_ IShowHits SparkBeam.png" />
 
 
 *(שם קוד אנגלי קצר: **IShowHits · SparkBeam (SB)**)*
